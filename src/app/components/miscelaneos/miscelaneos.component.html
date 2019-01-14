@@ -1,0 +1,104 @@
+<h1 style="text-align: center;"><b>ngStyle</b></h1>
+
+<h2>Texto:</h2>
+<p [ngStyle]="{'font-size': tamanio+'px'}">Texto a controlar</p>
+<p [style.fontSize.px]="tamanio">Texto a controlar</p>
+
+<button type="button" class="btn btn-primary" (click)="botonUP()">
+  <i class="fas fa-plus"></i>
+</button>
+<button type="button" class="btn btn-primary" (click)="botonDOWN()">
+  <i class="fas fa-minus"></i>
+</button>
+
+<!-- *************************************************** -->
+<br><br><br>
+<!-- *************************************************** -->
+
+<h2>Color:</h2>
+<p [ngStyle]="{'color': colorSelector?'red':'green'}">Texto a controlar</p>
+
+<button type="button" class="btn btn-primary" (click)="colorSelector = !colorSelector">
+  <i class="fas fa-brush"></i>
+</button>
+
+<!-- *************************************************** -->
+<br><br><br>
+<!-- *************************************************** -->
+
+<h1 style="text-align: center;"><b>ngClass</b></h1>
+
+<div class="alert" [ngClass]="{
+  'alert-primary': stylePrimary,
+  'alert-secondary': styleSecondary,
+  'alert-success': styleSuccess,
+  'alert-danger': styleDanger,
+  'alert-warning': styleWarning,
+  'alert-info': styleInfo
+  }" role="alert">
+  This is a primary alert—check it out!
+</div>
+<button type="button" class="btn btn-primary" (click)="changeAlertClass('primary')">Primary</button>
+<button type="button" class="btn btn-secondary" (click)="changeAlertClass('secondary')">Secondary</button>
+<button type="button" class="btn btn-success" (click)="changeAlertClass('success')">Success</button>
+<button type="button" class="btn btn-danger" (click)="changeAlertClass('danger')">Danger</button>
+<button type="button" class="btn btn-warning" (click)="changeAlertClass('warning')">Warning</button>
+<button type="button" class="btn btn-info" (click)="changeAlertClass('info')">Info</button>
+
+<br><br>
+
+<div class="alert" [ngClass]="variableAlerta" role="alert">
+  This is a primary alert—check it out!
+</div>
+<button type="button" class="btn btn-primary" (click)="variableAlerta='alert-primary'">Primary</button>
+<button type="button" class="btn btn-secondary" (click)="variableAlerta='alert-secondary'">Secondary</button>
+<button type="button" class="btn btn-success" (click)="variableAlerta='alert-success'">Success</button>
+<button type="button" class="btn btn-danger" (click)="variableAlerta='alert-danger'">Danger</button>
+<button type="button" class="btn btn-warning" (click)="variableAlerta='alert-warning'">Warning</button>
+<button type="button" class="btn btn-info" (click)="variableAlerta='alert-info'">Info</button>
+
+<!-- *************************************************** -->
+<br><br><br>
+<!-- *************************************************** -->
+
+<h1 style="text-align: center;"><b>ngClass asynchronos</b></h1>
+<button class="btn btn-primary" type="button" name="button" (click)="loadingService = !loadingService">
+<i class="fas" [ngClass]="{'fa-sync-alt fa-spin':loadingService, 'fa-save':!loadingService}"></i> Guardar Cambios
+<!-- "fas fa-save" "fas fa-sync-alt" -->
+</button> -> hacer click
+
+<!-- *************************************************** -->
+<br><br><br>
+<!-- *************************************************** -->
+
+<h1 style="text-align: center;"><b>Directives</b></h1>
+<p appResaltado> Texto a resaltar </p>
+
+<!-- *************************************************** -->
+<br><br><br>
+<!-- *************************************************** -->
+
+<h1 style="text-align: center;"><b>ngSwitch</b></h1>
+
+
+<input type="text" #valorIngresado (keyup.enter)="seleccionaValorSwitch(valorIngresado.value)" value="{{alertaNgSwitch}}">
+<div [ngSwitch]="alertaNgSwitch">
+  <div *ngSwitchCase="'info'">
+    <div class="alert alert-info" role="alert">In INFO</div>
+  </div>
+  <div *ngSwitchCase="'warning'">
+    <div class="alert alert-warning" role="alert">In WARNING</div>
+  </div>
+  <div *ngSwitchCase="'success'">
+    <div class="alert alert-success" role="alert">In SUCCESS</div>
+  </div>
+  <div *ngSwitchCase="'danger'">
+    <div class="alert alert-danger" role="alert">In DANGER</div>
+  </div>
+  <div *ngSwitchCase="'dark'">
+    <div class="alert alert-dark" role="alert">In DARK</div>
+  </div>
+  <div *ngSwitchDefault>
+    <div class="alert alert-light" role="alert">DEFAULT</div>
+  </div>
+</div>
